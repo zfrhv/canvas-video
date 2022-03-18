@@ -65,7 +65,7 @@ result:
 
 ## Info
 
-Hosted on firebase
+Hosted on firebase at https://canvas-video-embed.web.app/ or https://canvas-video-embed.firebaseapp.com/
 
 
 What the scrip is acutally doing?
