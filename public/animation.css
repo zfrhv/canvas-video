@@ -4,6 +4,7 @@
   border: 0.2vw solid #d6d5d2;
   border-radius: 1vw;
   margin: auto;
+  overflow: hidden;
 }
 
 .animation_box canvas {
