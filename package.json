@@ -4,7 +4,8 @@
   "description": "temporaty description",
   "main": "public/animation.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-prod": "npm install -g minify-dir;"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/zfrhv/canvas-video/issues"
   },
-  "homepage": "https://github.com/zfrhv/canvas-video#readme"
+  "homepage": "https://github.com/zfrhv/canvas-video#readme",
+  "dependencies": {
+    "three": "^0.138.3"
+  }
 }
