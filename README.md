@@ -18,7 +18,7 @@ just put this anywhere you want:
 ```
 
 ## Usage Exampples
-
+### To create 2d animation
 ```html
 <!DOCTYPE html>
 <html>
@@ -58,10 +58,33 @@ just put this anywhere you want:
 </body>
 </html>
 ```
-
 result:
 
 ![clock](https://user-images.githubusercontent.com/53610738/159015772-1e691bb7-be66-4dd3-aed9-41a2b003cc35.PNG)
+
+### To load 3d object at path `3d_objects_folder/my-object.obj`
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="module">
+    import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.module.js';
+    import { OBJLoader } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/OBJLoader.js';
+    import { MTLLoader } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/MTLLoader.js';
+    import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/controls/OrbitControls.js';
+    
+    window.THREE = THREE;
+    window.OBJLoader = OBJLoader;
+    window.MTLLoader = MTLLoader;
+    window.OrbitControls = OrbitControls;
+  </script>
+  <script id="CanvasVideo" src="https://canvas-video-embed.web.app/animation.js"></script>
+</head>
+<body>
+  <canvas-video type="threejs" path="3d_objects_folder/my-object.obj" scale="30"></canvas-video>
+</body>
+</html>
+```
 
 ## Info
 
