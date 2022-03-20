@@ -68,11 +68,11 @@ function create_threejs(looping_animation, animation_main) {
 
   // add light
   const toplight = new THREE.HemisphereLight(0x86cf66, 0x26401b, 0.5);
-  toplight.position.set(0, 1, 0).normalize();
+  toplight.position.set(0.1, 1, 0).normalize();
   scene.add(toplight);
 
   const frontLight = new THREE.DirectionalLight(0x4a96df, 0x183048, 0.5);
-  frontLight.position.set(0, 0, 1).normalize();
+  frontLight.position.set(0.3, 0, 1).normalize();
   scene.add(frontLight);
 
   const objLoader = new OBJLoader();
