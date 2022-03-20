@@ -57,16 +57,13 @@ function create_threejs(looping_animation, animation_main) {
 
   camera.position.z = 1;
 
-  // TODO check https://www.youtube.com/watch?v=wHuSQ7I1aKs
-
-  // https://drive.google.com/file/d/1KJ1AGps2PK1av3cz_VKvIdKC8ghyYT5N/view?usp=sharing
-
   const controls = new window.OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
   controls.campingFactor = 0.25;
   controls.enableZoom = true;
 
-  addLights(window.THREE, scene);
+  // add light
+  scene.add(new window.THREE.HemisphereLight(0x404040, 0xFFFFFF, 0.5));
 
   const objLoader = new window.OBJLoader();
   objLoader.load(looping_animation.getAttribute("path"), (object) => {
