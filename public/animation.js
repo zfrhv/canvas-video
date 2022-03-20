@@ -56,14 +56,14 @@ function create_threejs(looping_animation, animation_main) {
 
   // https://drive.google.com/file/d/1KJ1AGps2PK1av3cz_VKvIdKC8ghyYT5N/view?usp=sharing
 
-  const controls = new OrbitControls(camera, renderer.domElement);
+  const controls = new window.OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
   controls.campingFactor = 0.25;
   controls.enableZoom = true;
 
   addLights(window.THREE, scene);
 
-  const objLoader = new OBJLoader();
+  const objLoader = new window.OBJLoader();
   objLoader.load(looping_animation.getAttribute("path"), (object) => {
     const scale = looping_animation.getAttribute("scale");
     object.scale.set(scale, scale, scale);
