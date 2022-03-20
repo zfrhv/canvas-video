@@ -10,6 +10,7 @@
 .animation_box canvas {
   width: 100%;
   height: auto;
+  outline: none;
 }
 
 .animation_box>div {
