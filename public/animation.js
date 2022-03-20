@@ -63,7 +63,7 @@ function create_threejs(looping_animation, animation_main) {
   controls.enableZoom = true;
 
   // add light
-  scene.add(new window.THREE.HemisphereLight(0x404040, 0xFFFFFF, 0.5));
+  scene.add(THREE.HemisphereLight(0xf6e86d, 0x404040, 0.5));
 
   const objLoader = new window.OBJLoader();
   objLoader.load(looping_animation.getAttribute("path"), (object) => {
