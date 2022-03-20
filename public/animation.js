@@ -17,7 +17,6 @@ window.addEventListener('load', () => {
     animation_main.className += "animation_box";
 
     const type = looping_animation.getAttribute("type");
-    console.log(type)
     if (type === "threejs") {
       create_threejs(looping_animation, animation_main);
     } else {
@@ -45,7 +44,7 @@ function create_threejs(looping_animation, animation_main) {
   const scene = new window.THREE.Scene();
   const camera = new window.THREE.PerspectiveCamera(75, 1, 0.1, 1000);
 
-  renderer.setSize(animation_main.offsetWidth, animation_main.offsetWidth);
+  renderer.setSize(looping_animation.offsetWidth, looping_animation.offsetWidth);
   renderer.setClearColor( 0xffffff, 0);
 
   animation_main.appendChild(renderer.domElement);
