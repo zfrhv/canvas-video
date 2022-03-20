@@ -1,7 +1,3 @@
-// THREE = window.THREE;
-// OBJLoader = window.OBJLoader;
-// MTLLoader = window.MTLLoader;
-// OrbitControls = window.OrbitControls;
 
 // Append css
 const animation_css_link = document.createElement("link");
@@ -67,14 +63,15 @@ function create_threejs(looping_animation, animation_main) {
   controls.enableZoom = true;
 
   // Add light
-  const toplight = new THREE.HemisphereLight(0x86cf66, 0x103112, 0.5);
+  const toplight = new THREE.HemisphereLight(0xf5f5f5, 0x0f0f0f, 0.5);
   toplight.position.set(0, 1, 0).normalize();
   scene.add(toplight);
 
-  const frontLight = new THREE.HemisphereLight(0x4a96df, 0x102030, 0.5);
+  const frontLight = new THREE.HemisphereLight(0xf5f5f5, 0x0f0f0f, 0.5);
   frontLight.position.set(0.2, 0, 1).normalize();
   scene.add(frontLight);
 
+  // Load obj + mtl
   const mtlLoader = new MTLLoader();
   mtlLoader.load(looping_animation.getAttribute("material"), (material) => {
     material.preload();
