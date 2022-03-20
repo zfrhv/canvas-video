@@ -69,6 +69,7 @@ function create_threejs(looping_animation, animation_main) {
   // add light
   //new THREE.DirectionalLight( 0xffffff, 0.5 )
   scene.add(new THREE.HemisphereLight(0xf6e86d, 0x404040, 0.5));
+  scene.add(new THREE.HemisphereLight(0x404040, 0xFFFFFF, 0.5));
 
   const objLoader = new OBJLoader();
   objLoader.load(looping_animation.getAttribute("path"), (object) => {
