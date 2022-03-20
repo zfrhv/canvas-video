@@ -42,9 +42,9 @@ function update_button(button) {
 }
 
 function create_threejs(looping_animation, animation_main) {
-  const renderer = new THREE.WebGLRenderer({ alpha: true });
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+  const renderer = new window.THREE.WebGLRenderer({ alpha: true });
+  const scene = new window.THREE.Scene();
+  const camera = new window.THREE.PerspectiveCamera(75, 1, 0.1, 1000);
 
   renderer.setSize(animation_main.offsetWidth, animation_main.offsetWidth);
   renderer.setClearColor( 0xffffff, 0);
@@ -62,7 +62,7 @@ function create_threejs(looping_animation, animation_main) {
   controls.campingFactor = 0.25;
   controls.enableZoom = true;
 
-  addLights(THREE, scene);
+  addLights(window.THREE, scene);
 
   const objLoader = new OBJLoader();
   objLoader.load(looping_animation.getAttribute("path"), (object) => {
