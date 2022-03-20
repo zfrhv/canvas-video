@@ -44,10 +44,10 @@ function create_threejs(looping_animation, animation_main) {
   const scene = new window.THREE.Scene();
   const camera = new window.THREE.PerspectiveCamera(75, 1, 0.1, 1000);
 
-  console.log(looping_animation.offsetWidth)
-  console.log(looping_animation)
   renderer.setSize(1000, 1000);
   renderer.setClearColor( 0xffffff, 0);
+  renderer.domElement.style.width = "100%";
+  renderer.domElement.style.height = "100%";
 
   animation_main.appendChild(renderer.domElement);
 
