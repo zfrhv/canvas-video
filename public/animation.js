@@ -1,3 +1,7 @@
+THREE = window.THREE;
+OBJLoader = window.OBJLoader;
+MTLLoader = window.MTLLoader;
+OrbitControls = window.OrbitControls;
 
 // Append css
 const animation_css_link = document.createElement("link");
@@ -40,9 +44,9 @@ function update_button(button) {
 }
 
 function create_threejs(looping_animation, animation_main) {
-  const renderer = new window.THREE.WebGLRenderer({ alpha: true });
-  const scene = new window.THREE.Scene();
-  const camera = new window.THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ alpha: true });
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
 
   renderer.setSize(1000, 1000);
 
@@ -57,7 +61,7 @@ function create_threejs(looping_animation, animation_main) {
 
   camera.position.z = 1;
 
-  const controls = new window.OrbitControls(camera, renderer.domElement);
+  const controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
   controls.campingFactor = 0.25;
   controls.enableZoom = true;
@@ -65,7 +69,7 @@ function create_threejs(looping_animation, animation_main) {
   // add light
   scene.add(THREE.HemisphereLight(0xf6e86d, 0x404040, 0.5));
 
-  const objLoader = new window.OBJLoader();
+  const objLoader = new OBJLoader();
   objLoader.load(looping_animation.getAttribute("path"), (object) => {
     const scale = looping_animation.getAttribute("scale");
     object.scale.set(scale, scale, scale);
@@ -102,14 +106,14 @@ function create_2d_canvas(looping_animation, animation_main) {
       function toolbar_press() {
         play_button.setAttribute("playing", "false");
         update_button(play_button);
-        window.requestAnimationFrame(animation);
+        requestAnimationFrame(animation);
       }
       play_button.onclick = function () {
         if (this.getAttribute("playing") == "true") {
           this.setAttribute("playing", "false");
         } else {
           this.setAttribute("playing", "true");
-          window.requestAnimationFrame(animation);
+          requestAnimationFrame(animation);
         }
         update_button(this);
       }
