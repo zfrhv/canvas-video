@@ -18,6 +18,7 @@ window.addEventListener('load', () => {
     animation_main.className += "animation_box";
 
     const type = looping_animation.getAttribute("type");
+    console.log(type)
     if (type === "threejs") {
       create_threejs(looping_animation, animation_main);
     } else {
