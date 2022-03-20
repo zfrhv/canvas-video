@@ -9,7 +9,6 @@ animation_css_link.media = "screen,print";
 document.getElementsByTagName("head")[0].appendChild(animation_css_link);
 
 // Main
-
 window.addEventListener('load', () => {
   document.querySelectorAll('canvas-video').forEach(looping_animation => {
     const animation_main = document.createElement('div');
