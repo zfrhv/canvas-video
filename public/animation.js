@@ -26,9 +26,6 @@ window.addEventListener('load', () => {
 
     // replace the element
     looping_animation.parentNode.replaceChild(animation_main, looping_animation);
-
-    // draw the picture
-    window.requestAnimationFrame(animation);
   });
 });
 
@@ -73,14 +70,14 @@ function create_threejs(looping_animation, animation_main) {
     scene.add(object);
   });
 
-  function play() {
-    requestAnimationFrame(play);
+  function animation() {
+    requestAnimationFrame(animation);
 
     controls.update();
 
     renderer.render(scene, camera);
   }
-  play();
+  animation();
 }
 
 function create_2d_canvas(looping_animation, animation_main) {
@@ -138,4 +135,6 @@ function create_2d_canvas(looping_animation, animation_main) {
       play_button.click();
     }
   };
+
+  animation();
 }
