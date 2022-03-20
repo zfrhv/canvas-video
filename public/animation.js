@@ -1,4 +1,9 @@
 
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.module.js';
+
+import { OBJLoader } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/OBJLoader.js';
+import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/controls/OrbitControls.js';
+
 // Append css
 const animation_css_link = document.createElement("link");
 animation_css_link.href = "https://canvas-video-embed.web.app/animation.css";
@@ -17,7 +22,12 @@ window.addEventListener('load', () => {
     animation_main.style.cssText += looping_animation.style.cssText;
     animation_main.className += "animation_box";
 
-    create_2d_canvas(animation_main);
+    const type = looping_animation.getAttribute("type");
+    if (type === "threejs") {
+      create_threejs(looping_animation, animation_main);
+    } else {
+      create_2d_canvas(looping_animation, animation_main);
+    }
 
     // replace the element
     looping_animation.parentNode.replaceChild(animation_main, looping_animation);
@@ -38,7 +48,47 @@ function update_button(button) {
   }
 }
 
-function create_2d_canvas(animation_main) {
+function create_threejs(looping_animation, animation_main) {
+  const renderer = new THREE.WebGLRenderer({ alpha: true });
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+
+  renderer.setSize(animation_main.offsetWidth, animation_main.offsetWidth);
+  renderer.setClearColor( 0xffffff, 0);
+
+  animation_main.appendChild(renderer.domElement);
+
+  camera.position.z = 1;
+
+  // TODO check https://www.youtube.com/watch?v=wHuSQ7I1aKs
+
+  // https://drive.google.com/file/d/1KJ1AGps2PK1av3cz_VKvIdKC8ghyYT5N/view?usp=sharing
+
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.campingFactor = 0.25;
+  controls.enableZoom = true;
+
+  addLights(THREE, scene);
+
+  const objLoader = new OBJLoader();
+  objLoader.load(looping_animation.getAttribute("path"), (object) => {
+    const scale = looping_animation.getAttribute("scale");
+    object.scale.set(scale, scale, scale);
+    scene.add(object);
+  });
+
+  function play() {
+    requestAnimationFrame(play);
+
+    controls.update();
+
+    renderer.render(scene, camera);
+  }
+  play();
+}
+
+function create_2d_canvas(looping_animation, animation_main) {
   function animation() {
     window[looping_animation.getAttribute("function") ? looping_animation.getAttribute("function") : looping_animation.getAttribute("name")](animation_main);
   }
