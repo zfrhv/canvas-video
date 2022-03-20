@@ -71,7 +71,7 @@ function create_threejs(looping_animation, animation_main) {
   toplight.position.set(0.1, 1, 0).normalize();
   scene.add(toplight);
 
-  const frontLight = new THREE.DirectionalLight(0x4a96df, 0x183048, 0.5);
+  const frontLight = new THREE.HemisphereLight(0x4a96df, 0x183048, 0.5);
   frontLight.position.set(0.3, 0, 1).normalize();
   scene.add(frontLight);
 
