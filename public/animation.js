@@ -46,7 +46,7 @@ function create_threejs(looping_animation, animation_main) {
 
   console.log(looping_animation.offsetWidth)
   console.log(looping_animation)
-  renderer.setSize(looping_animation.offsetWidth, looping_animation.offsetWidth);
+  renderer.setSize(1000, 1000);
   renderer.setClearColor( 0xffffff, 0);
 
   animation_main.appendChild(renderer.domElement);
