@@ -67,7 +67,21 @@ result:
 <!DOCTYPE html>
 <html>
 <head>
-    <script type="module">
+  <script id="CanvasVideo" src="https://canvas-video-embed.web.app/animation.js"></script>
+</head>
+<body>
+  <canvas-video type="threejs" object="3d_objects/magnets_merged.obj" material="3d_objects/magnets_merged.mtl" scale="0.4"></canvas-video>
+</body>
+</html>
+```
+
+If you dont want to do `npm install --save three` then you can try to do workaround with `<script>`:
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- instead of using npm load threejs from url -->
+  <script type="module">
     import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.module.js';
     import { OBJLoader } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/OBJLoader.js';
     import { MTLLoader } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/MTLLoader.js';
@@ -78,10 +92,16 @@ result:
     window.MTLLoader = MTLLoader;
     window.OrbitControls = OrbitControls;
   </script>
+  <script>
+    THREE = window.THREE;
+    OBJLoader = window.OBJLoader;
+    MTLLoader = window.MTLLoader;
+    OrbitControls = window.OrbitControls;
+  </script>
   <script id="CanvasVideo" src="https://canvas-video-embed.web.app/animation.js"></script>
 </head>
 <body>
-  <canvas-video type="threejs" path="3d_objects_folder/my-object.obj" scale="30"></canvas-video>
+  <canvas-video type="threejs" object="3d_objects/magnets_merged.obj" material="3d_objects/magnets_merged.mtl" scale="0.4"></canvas-video>
 </body>
 </html>
 ```
