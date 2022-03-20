@@ -1,7 +1,7 @@
-THREE = window.THREE;
-OBJLoader = window.OBJLoader;
-MTLLoader = window.MTLLoader;
-OrbitControls = window.OrbitControls;
+// THREE = window.THREE;
+// OBJLoader = window.OBJLoader;
+// MTLLoader = window.MTLLoader;
+// OrbitControls = window.OrbitControls;
 
 // Append css
 const animation_css_link = document.createElement("link");
@@ -66,7 +66,7 @@ function create_threejs(looping_animation, animation_main) {
   controls.campingFactor = 0.25;
   controls.enableZoom = true;
 
-  // add light
+  // Add light
   const toplight = new THREE.HemisphereLight(0x86cf66, 0x103112, 0.5);
   toplight.position.set(0, 1, 0).normalize();
   scene.add(toplight);
@@ -75,11 +75,17 @@ function create_threejs(looping_animation, animation_main) {
   frontLight.position.set(0.2, 0, 1).normalize();
   scene.add(frontLight);
 
-  const objLoader = new OBJLoader();
-  objLoader.load(looping_animation.getAttribute("path"), (object) => {
-    const scale = looping_animation.getAttribute("scale");
-    object.scale.set(scale, scale, scale);
-    scene.add(object);
+  const mtlLoader = new MTLLoader();
+  mtlLoader.load(looping_animation.getAttribute("material"), (material) => {
+    material.preload();
+
+    const objLoader = new OBJLoader();
+    objLoader.setMaterials(material);
+    objLoader.load(looping_animation.getAttribute("object"), (object) => {
+      const scale = looping_animation.getAttribute("scale");
+      object.scale.set(scale, scale, scale);
+      scene.add(object);
+    });
   });
 
   function animation() {
