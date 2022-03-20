@@ -67,12 +67,12 @@ function create_threejs(looping_animation, animation_main) {
   controls.enableZoom = true;
 
   // add light
-  const toplight = new THREE.HemisphereLight(0x86cf66, 0x26401b, 0.5);
+  const toplight = new THREE.HemisphereLight(0x86cf66, 0x103112, 0.5);
   toplight.position.set(0, 1, 0).normalize();
   scene.add(toplight);
 
-  const frontLight = new THREE.HemisphereLight(0x4a96df, 0x183048, 0.5);
-  frontLight.position.set(0, 0, 1).normalize();
+  const frontLight = new THREE.HemisphereLight(0x4a96df, 0x102030, 0.5);
+  frontLight.position.set(0.2, 0, 1).normalize();
   scene.add(frontLight);
 
   const objLoader = new OBJLoader();
