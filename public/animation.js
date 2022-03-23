@@ -135,6 +135,7 @@ function create_2d_canvas(looping_animation, animation_main) {
       const play_proccess = document.createElement('input');
       toolbar.append(play_proccess);
       play_proccess.type = 'range';
+      play_proccess.setAttribute("draggable", "true");
       play_proccess.value = looping_animation.getAttribute("start");
       play_proccess.min = 0;
       play_proccess.max = 1000;
