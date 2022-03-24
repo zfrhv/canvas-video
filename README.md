@@ -108,7 +108,9 @@ If you dont want to do `npm install --save three` then you can try to do workaro
 
 ## Info
 
-Hosted on firebase at https://canvas-video-embed.web.app/ or https://canvas-video-embed.firebaseapp.com/
+Hosted on firebase:
+- https://canvas-video-embed.web.app/
+- https://canvas-video-embed.firebaseapp.com/
 
 
 What the scrip is acutally doing?
